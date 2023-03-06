@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: container-backend
-        image: 314156154970.dkr.ecr.us-east-1.amazonaws.com/devopsodia-backendapp:30
+        image: 34.125.107.168:8083/backend: ${DOCKERTAG}
         ports:
         - containerPort: 8080
 ---
