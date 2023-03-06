@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: container-backend
-        image: 34.125.107.168:8083/backend: latest
+        image: 34.125.107.168:8083/backend:latest
         ports:
         - containerPort: 8080
 ---
@@ -27,10 +27,7 @@ metadata:
   labels:
     app: backend
 spec:
-  #type: LoadBalancer
-  #type: NodePort
   ports:
   - port: 8080
-  #nodePort: 30001
   selector:
     app: backend
