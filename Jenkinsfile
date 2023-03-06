@@ -25,7 +25,6 @@ pipeline {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git remote add origin https://github.com/Phani808/backend-update-k8s.git"
                         sh "git push --force origin main"
                         
                         
