@@ -25,7 +25,7 @@ pipeline {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push --force https://${git user}:${git pass}@github.com/${git user}/backend-update-k8s.git' HEAD:main"
+                        sh "git push --force https://${git user}:${git pass}@github.com/${git user}/backend-update-k8s.git"
                         
                         
                     }
