@@ -12,6 +12,9 @@ pipeline {
             stage('Update Manifest'){
             steps {
             script{
+                options {
+    timeout(time: 30, unit: 'MINUTES')
+}
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     //withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
                   withCredentials([usernamePassword(credentialsId: 'git', passwordVariable: 'git pass', usernameVariable: 'git user')]) {
