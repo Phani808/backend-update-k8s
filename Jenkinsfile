@@ -14,7 +14,7 @@ pipeline {
             script{
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     //withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-   
+                   withCredentials([sshUserPrivateKey(credentialsId: 'github', keyFileVariable: 'git', passphraseVariable: 'git', usernameVariable: 'git')]) {
                     
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config --global user.email mpvarma997@gmail.com"
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }    
-            
+    }      
     }
   
    }
