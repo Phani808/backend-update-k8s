@@ -17,6 +17,8 @@ spec:
       containers:
       - name: container-backend
         image: backend:33
+        imagePullSecrets:
+    - name: registry-secret
         ports:
         - containerPort: 8080
 ---
