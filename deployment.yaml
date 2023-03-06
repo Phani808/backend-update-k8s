@@ -1,36 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  labels:
-    app: backend
+  name: nginx-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: backend
+      app: nginx
   template:
     metadata:
       labels:
-        app: backend
+        app: nginx
     spec:
       containers:
-      - name: container-backend
-        image: 34.125.107.168:8083/backend: ${DOCKERTAG}
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-svc
-  labels:
-    app: backend
-spec:
-  #type: LoadBalancer
-  #type: NodePort
-  ports:
-  - port: 8080
-  #nodePort: 30001
-  selector:
-    app: backend
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
