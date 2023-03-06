@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: container-backend
-        image: 34.125.107.168:8083/backend:33
+        image: backend:33
         ports:
         - containerPort: 8080
 ---
