@@ -17,8 +17,8 @@ pipeline {
    
                     
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                        sh "git config user.email mpvarma997@gmail.com"
-                        sh "git config user.name phani"
+                        sh "git config --global user.email mpvarma997@gmail.com"
+                        sh "git config --global user.name phani"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
                         sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:${DOCKERTAG}+g' deployment.yaml"
