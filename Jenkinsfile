@@ -1,8 +1,10 @@
+def IMAGE_VERSION = "1.0.0"
 pipeline {
    agent any
    environment {
         APP_NAME = "backend"
         IMAGE_TAG = "${BUILD_NUMBER}"
+
         
 
     }
