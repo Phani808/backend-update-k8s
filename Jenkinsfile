@@ -1,5 +1,11 @@
 pipeline {
    agent any
+   environment {
+        APP_NAME = "backend"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+        
+
+    }
 
     stages {
         stage('Git Checkout') {
