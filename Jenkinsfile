@@ -14,7 +14,7 @@ pipeline {
             script{
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     //withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                  withCredentials([usernamePassword(credentialsId: 'git', passwordVariable: 'git pass', usernameVariable: 'git user')]) {
+                   withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
                     
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config --global user.email mpvarma997@gmail.com"
@@ -25,8 +25,8 @@ pipeline {
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git remote set-url origin https://${git user}:${git pass}@github.com/${git user}/backend-update-k8s.git"
-                        sh "git push origin main"
+                        sh "git remote set-url origin https://github.combackend-update-k8s.git"
+                        sh 'git push origin HEAD:main'
                         
                         
                     }
