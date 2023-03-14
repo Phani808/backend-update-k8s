@@ -1,4 +1,3 @@
-def IMAGE_VERSION = "1.0.0"
 pipeline {
    agent any
    environment {
