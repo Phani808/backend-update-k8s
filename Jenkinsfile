@@ -28,22 +28,20 @@ pipeline {
    
     }
 } 
- stage('Git Version Update') {
-            steps {
-                script {
-                    withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
-                        sh 'git config --global user.email "mpvarma997@gmail.com"'
-                        sh 'git config --global user.name "phani"'
-                        sh "git remote set-url origin https://github.com/Phani808/backend.git"
-                        sh 'git add .'
-                        sh 'git commit -m "update deployment.yml file"'
-                        sh 'git push origin HEAD:main'
-                    }
+//  stage('Git Version Update') {
+            // steps {
+                // script {
+                    // withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
+                    //     sh 'git config --global user.email "mpvarma997@gmail.com"'
+                    //     sh 'git config --global user.name "phani"'
+                    //     sh "git remote set-url origin https://github.com/Phani808/backend.git"
+                    //     sh 'git add .'
+                    //     sh 'git commit -m "update deployment.yml file"'
+                    //     sh 'git push origin HEAD:main'
+                    // }
                 }
             }
- } 
-    }
-}
+
 
         
    
