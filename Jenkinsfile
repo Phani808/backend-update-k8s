@@ -9,6 +9,19 @@ pipeline {
             }
                 }  
             }
+            stage('increment version') {
+            steps {
+                script {
+                    echo 'incrementing app version...'
+                    sh 'mvn build-helper:parse-version versions:set \
+                        -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.incrementalVersion} \
+                        versions:commit'
+                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+                    def version = matcher[0][1]
+                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+                }
+            }
+            }   
             stage('Update Manifest'){
             steps {
             script{
@@ -24,7 +37,7 @@ pipeline {
                         sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:$IMAGE_NAME+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
-                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.IMAGE_NAME}}'"
+                        sh "git commit -m 'Done by Jenkins Job changemanifest: $IMAGE_NAME}'"
                         sh "git remote set-url origin https://github.combackend-update-k8s.git"
                         sh 'git push origin HEAD:main'
                         
