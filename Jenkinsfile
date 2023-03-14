@@ -18,11 +18,18 @@ pipeline {
                    withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
                     
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
+                        stage('Update Deployment YAML') {
+      
+        
+          def version = '2.1.2' // set the new version here
+          
+          // Replace the version number in the deployment.yaml file
+          sh "sed -i 's/version:.*/version: ${version}/' deployment.yaml"
                         sh "git config --global user.email mpvarma997@gmail.com"
                         sh "git config --global user.name phani"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:$IMAGE_NAME+g' deployment.yaml"
+                       
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: $IMAGE_NAME}'"
@@ -36,8 +43,8 @@ pipeline {
         }    
     }      
     }
-  
-   }
+    }
+}   
 
         
    
