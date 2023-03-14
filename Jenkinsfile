@@ -21,7 +21,7 @@ pipeline {
                         sh "git config --global user.name phani"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:${env.IMAGE_NAME}+g' deployment.yaml"
+                        sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:$IMAGE_NAME+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.IMAGE_NAME}}'"
