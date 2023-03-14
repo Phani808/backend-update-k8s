@@ -21,7 +21,7 @@ pipeline {
             script {
                 sh """
                 cat deployment.yml
-                sed -i 's/${APP_NAME}.*/${APP_NAME}:${params.IMAGE_VERSION}/g' deployment.yml
+                sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_VERSION}/g' deployment.yml
                 cat deployment.yml
                 """
         }
