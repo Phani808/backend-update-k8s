@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: container-backend
-        image: backend:33
+        image: backend:$IMAGE_NAME
         imagePullSecrets:
       - name: registry-secret
         ports:
