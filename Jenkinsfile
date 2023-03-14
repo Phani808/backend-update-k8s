@@ -24,7 +24,7 @@ pipeline {
                         sh "sed -i 's+34.125.107.168:8083/backend.*+34.125.107.168:8083/backend:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
-                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.IMAGE_NAME}'"
                         sh "git remote set-url origin https://github.combackend-update-k8s.git"
                         sh 'git push origin HEAD:main'
                         
